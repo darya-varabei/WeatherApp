@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSans-Medium.ttf">
+            <string>NotoSans-Medium</string>
+        </array>
+        <array key="NotoSans-Regular.ttf">
+            <string>NotoSans-Regular</string>
+        </array>
+        <array key="NotoSans-SemiBold.ttf">
+            <string>NotoSans-SemiBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dJ-vg-E6Q">
+                                <rect key="frame" x="20" y="56" width="374" height="28"/>
+                                <fontDescription key="fontDescription" name="NotoSans-Medium" family="Noto Sans" pointSize="24"/>
+                                <color key="textColor" name="BasicWhite"/>
+                                <color key="highlightedColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EBT-QU-0gl">
+                                <rect key="frame" x="28" y="118" width="358" height="177"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Toz-8G-DzY">
+                                        <rect key="frame" x="18" y="36" width="210" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="20"/>
+                                        <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wed, 16 Jul 3:45 pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3g-2f-ViH">
+                                        <rect key="frame" x="18" y="64.5" width="207" height="16.5"/>
+                                        <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="14"/>
+                                        <color key="textColor" name="BasicYellow"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="DarkBackground"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="y3g-2f-ViH" secondAttribute="trailing" constant="133" id="3Y3-62-jgD"/>
+                                    <constraint firstAttribute="trailing" secondItem="Toz-8G-DzY" secondAttribute="trailing" constant="130" id="778-HX-ugq"/>
+                                    <constraint firstItem="y3g-2f-ViH" firstAttribute="top" secondItem="Toz-8G-DzY" secondAttribute="bottom" constant="5" id="9wr-e0-Ctc"/>
+                                    <constraint firstItem="y3g-2f-ViH" firstAttribute="leading" secondItem="EBT-QU-0gl" secondAttribute="leading" constant="18" id="F7f-mO-QJm"/>
+                                    <constraint firstAttribute="height" constant="177" id="He0-wK-33B"/>
+                                    <constraint firstItem="Toz-8G-DzY" firstAttribute="top" secondItem="EBT-QU-0gl" secondAttribute="top" constant="36" id="Kfc-5F-2m0"/>
+                                    <constraint firstItem="Toz-8G-DzY" firstAttribute="leading" secondItem="EBT-QU-0gl" secondAttribute="leading" constant="18" id="RfX-fQ-suc"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" name="BackgroundBasic"/>
+                        <color key="tintColor" name="BackgroundBasic"/>
+                        <constraints>
+                            <constraint firstItem="5dJ-vg-E6Q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="F6r-Mu-xcM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EBT-QU-0gl" secondAttribute="trailing" constant="28" id="L1i-Yx-pqy"/>
+                            <constraint firstItem="5dJ-vg-E6Q" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="MZO-Ax-iE7"/>
+                            <constraint firstItem="EBT-QU-0gl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="28" id="UeU-7Z-uec"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5dJ-vg-E6Q" secondAttribute="trailing" constant="20" id="mlS-jB-RyP"/>
+                            <constraint firstItem="EBT-QU-0gl" firstAttribute="top" secondItem="5dJ-vg-E6Q" secondAttribute="bottom" constant="34" id="vL8-YS-stY"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="88.392857142857139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="BackgroundBasic">
+            <color red="0.40000000000000002" green="0.41960784313725491" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BasicWhite">
+            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BasicYellow">
+            <color red="0.99607843137254903" green="0.78431372549019607" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DarkBackground">
+            <color red="0.28627450980392155" green="0.29803921568627451" blue="0.63137254901960782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
