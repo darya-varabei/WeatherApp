@@ -17,7 +17,9 @@ class ViewController: UIViewController {
     
     @IBOutlet var weatherWidget: [UIView]!
     @IBOutlet weak var calendarButton: UIButton!
-    let tableView = UITableView()
+    @IBOutlet weak var windStrength: UILabel!
+    private let tableView = UITableView()
+    private let datePicker: UIDatePicker = UIDatePicker()
     
     fileprivate let data = [
         CustomData(title: "The Islands!", url: "maxcodes.io/enroll", backgroundImage: UIImage(named: "Partly")!),
@@ -42,6 +44,7 @@ class ViewController: UIViewController {
         self.weatherWidget[0].layer.cornerRadius = 15
         view.addSubview(collectionView)
         view.addSubview(tableView)
+        self.view.addSubview(datePicker)
         collectionView.backgroundColor = .clear
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -62,6 +65,27 @@ class ViewController: UIViewController {
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -94).isActive = true
+        tableView.showsVerticalScrollIndicator = false
+        
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        datePicker.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 20).isActive = true
+        datePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 28).isActive = true
+        datePicker.datePickerMode = .date
+        datePicker.backgroundColor = UIColor(named: "BackgroundBasic")
+        datePicker.tintColor = UIColor(named: "BasicYellow")
+        datePicker.timeZone = NSTimeZone.local
+        datePicker.addTarget(self, action: #selector(ViewController.datePickerValueChanged(_:)), for: .valueChanged)
+        
+        
+    }
+    
+    @objc func datePickerValueChanged(_ sender: UIDatePicker){
+        
+        let dateFormatter: DateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let selectedDate: String = dateFormatter.string(from: sender.date)
+        
+        print("Selected value \(selectedDate)")
     }
 }
 
@@ -85,20 +109,20 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
-        
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return data.count
-        }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60.0
     }
-        
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! TableCell
-            cell.backgroundColor = .clear
-            cell.data = self.data[indexPath.item]
-            return cell
-        }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! TableCell
+        cell.backgroundColor = .clear
+        cell.data = self.data[indexPath.item]
+        return cell
+    }
 }
 

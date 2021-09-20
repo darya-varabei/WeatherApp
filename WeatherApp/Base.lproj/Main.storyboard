@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VIl-vl-dGh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VIl-vl-dGh">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -107,21 +107,37 @@
                                         <color key="textColor" name="BasicWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Partly" translatesAutoresizingMaskIntoConstraints="NO" id="uim-h4-XKd">
-                                        <rect key="frame" x="246" y="16" width="87" height="87"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Partly" translatesAutoresizingMaskIntoConstraints="NO" id="uim-h4-XKd">
+                                        <rect key="frame" x="212" y="15" width="128" height="91.5"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 m/s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLO-X3-0hv">
+                                        <rect key="frame" x="284.5" y="145.5" width="46.5" height="17.5"/>
+                                        <color key="tintColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="15"/>
+                                        <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="highlightedColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wind" translatesAutoresizingMaskIntoConstraints="NO" id="ykJ-mF-jia">
+                                        <rect key="frame" x="220.5" y="136.5" width="60" height="26.5"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="DarkBackground"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="ykJ-mF-jia" secondAttribute="bottom" constant="14" id="0Bz-DE-sZR"/>
                                     <constraint firstAttribute="trailing" secondItem="ilK-mz-M0l" secondAttribute="trailing" constant="120" id="159-LE-qg1"/>
                                     <constraint firstAttribute="trailing" secondItem="4ED-FC-EPs" secondAttribute="trailing" constant="120" id="7ed-P2-e8A"/>
                                     <constraint firstItem="ilK-mz-M0l" firstAttribute="top" secondItem="5Jy-Lt-s7k" secondAttribute="top" constant="36" id="9Nd-Kx-Fgz"/>
                                     <constraint firstItem="uim-h4-XKd" firstAttribute="leading" secondItem="5Jy-Lt-s7k" secondAttribute="leading" constant="212" id="EOJ-WQ-6Bh"/>
                                     <constraint firstItem="blf-0x-2R0" firstAttribute="top" secondItem="5Jy-Lt-s7k" secondAttribute="top" constant="62" id="IP1-9h-M8y"/>
+                                    <constraint firstItem="ykJ-mF-jia" firstAttribute="top" secondItem="uim-h4-XKd" secondAttribute="bottom" constant="30" id="Jok-Wr-H8u"/>
+                                    <constraint firstItem="oLO-X3-0hv" firstAttribute="leading" secondItem="ykJ-mF-jia" secondAttribute="trailing" constant="4" id="T23-nE-BTc"/>
                                     <constraint firstItem="blf-0x-2R0" firstAttribute="leading" secondItem="5Jy-Lt-s7k" secondAttribute="leading" constant="18" id="am2-JS-6Vh"/>
                                     <constraint firstItem="7CT-7F-7xB" firstAttribute="leading" secondItem="5Jy-Lt-s7k" secondAttribute="leading" constant="18" id="b8q-Bh-Xry"/>
                                     <constraint firstAttribute="trailing" secondItem="uim-h4-XKd" secondAttribute="trailing" constant="18" id="bbr-na-VQi"/>
+                                    <constraint firstItem="oLO-X3-0hv" firstAttribute="top" secondItem="uim-h4-XKd" secondAttribute="bottom" constant="39" id="cli-Uq-8qp"/>
+                                    <constraint firstAttribute="trailing" secondItem="oLO-X3-0hv" secondAttribute="trailing" constant="27" id="cnu-Lj-drc"/>
                                     <constraint firstItem="uim-h4-XKd" firstAttribute="top" secondItem="5Jy-Lt-s7k" secondAttribute="top" constant="15" id="dFd-Mm-RUq"/>
+                                    <constraint firstAttribute="bottom" secondItem="oLO-X3-0hv" secondAttribute="bottom" constant="14" id="ebM-x3-Sjd"/>
                                     <constraint firstItem="4ED-FC-EPs" firstAttribute="leading" secondItem="5Jy-Lt-s7k" secondAttribute="leading" constant="18" id="fe3-Vg-bX1"/>
                                     <constraint firstItem="ilK-mz-M0l" firstAttribute="leading" secondItem="5Jy-Lt-s7k" secondAttribute="leading" constant="18" id="kVz-px-iia"/>
                                     <constraint firstItem="7CT-7F-7xB" firstAttribute="top" secondItem="blf-0x-2R0" secondAttribute="bottom" constant="22" id="p75-iP-GIT"/>
@@ -137,6 +153,9 @@
                                 <state key="normal" title="16 Jul, 2021 ">
                                     <color key="titleColor" name="BasicYellow"/>
                                 </state>
+                                <connections>
+                                    <action selector="chooseDate:" destination="rl4-mZ-VcJ" eventType="touchUpInside" id="f5H-T0-SHq"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="739-vJ-Jjb">
                                 <rect key="frame" x="309" y="409" width="77" height="26"/>
@@ -165,6 +184,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="calendarButton" destination="lJF-8E-wPT" id="10l-Jt-Yyq"/>
+                        <outlet property="windStrength" destination="oLO-X3-0hv" id="kZW-LR-CjS"/>
                         <outletCollection property="weatherWidget" destination="5Jy-Lt-s7k" collectionClass="NSMutableArray" id="tif-3r-x9L"/>
                     </connections>
                 </viewController>
@@ -195,13 +215,14 @@
                                 <color key="textColor" name="OpaqueWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5P-Qd-sGV">
+                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="fill" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5P-Qd-sGV">
                                 <rect key="frame" x="37" y="209.5" width="340" height="62"/>
                                 <color key="backgroundColor" name="DarkBackground"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="62" id="EkY-im-fKc"/>
                                 </constraints>
-                                <state key="normal">
+                                <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="16"/>
+                                <state key="normal" title="    See weather in cities">
                                     <color key="titleColor" name="BasicWhite"/>
                                     <color key="titleShadowColor" name="DarkBackground"/>
                                 </state>
@@ -304,6 +325,7 @@
         <image name="Partly" width="128" height="128"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="wind" width="60" height="60"/>
         <namedColor name="BackgroundBasic">
             <color red="0.40000000596046448" green="0.41999998688697815" blue="0.81599998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

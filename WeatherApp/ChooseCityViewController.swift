@@ -41,16 +41,19 @@ class ChooseCityViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.topAnchor.constraint(equalTo:self.featured[0].bottomAnchor, constant: 20).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 39).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -39).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -78).isActive = true
         collectionView.showsVerticalScrollIndicator = false
+        
+        self.chooseCityButton[0].layer.cornerRadius = 15
+        
     }
 }
 
 extension ChooseCityViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 160, height: 70)
+        return CGSize(width: 150, height: 70)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count

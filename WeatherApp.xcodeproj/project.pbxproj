@@ -18,6 +18,8 @@
 		4B487C8E26F4E13900098BF7 /* NotoSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B487C8D26F4E13900098BF7 /* NotoSans-Medium.ttf */; };
 		4B487C9026F4E14400098BF7 /* NotoSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B487C8F26F4E14400098BF7 /* NotoSans-Regular.ttf */; };
 		4B487C9226F4E14C00098BF7 /* NotoSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B487C9126F4E14C00098BF7 /* NotoSans-SemiBold.ttf */; };
+		4B77D9A826F8B8C500858906 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B77D9A726F8B8C500858906 /* Day.swift */; };
+		4B77D9AA26F8BA6800858906 /* MonthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B77D9A926F8BA6800858906 /* MonthData.swift */; };
 		D5011A3526F725E500125A4A /* ChooseCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5011A3426F725E500125A4A /* ChooseCityViewController.swift */; };
 		D5DFC48026F7B2390020ED62 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DFC47F26F7B2390020ED62 /* Cells.swift */; };
 /* End PBXBuildFile section */
@@ -45,11 +47,12 @@
 		4B487C3E26F4B14200098BF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B487C4126F4B14200098BF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B487C4326F4B14200098BF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4B487C4F26F4B38C00098BF7 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		4B487C8B26F4E12500098BF7 /* NotoSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Bold.ttf"; sourceTree = "<group>"; };
 		4B487C8D26F4E13900098BF7 /* NotoSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Medium.ttf"; sourceTree = "<group>"; };
 		4B487C8F26F4E14400098BF7 /* NotoSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Regular.ttf"; sourceTree = "<group>"; };
 		4B487C9126F4E14C00098BF7 /* NotoSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		4B77D9A726F8B8C500858906 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		4B77D9A926F8BA6800858906 /* MonthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthData.swift; sourceTree = "<group>"; };
 		D5011A3426F725E500125A4A /* ChooseCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCityViewController.swift; sourceTree = "<group>"; };
 		D5DFC47F26F7B2390020ED62 /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,6 +93,8 @@
 				4B487C3626F4B14200098BF7 /* ViewController.swift */,
 				D5DFC47F26F7B2390020ED62 /* Cells.swift */,
 				D5011A3426F725E500125A4A /* ChooseCityViewController.swift */,
+				4B77D9A726F8B8C500858906 /* Day.swift */,
+				4B77D9A926F8BA6800858906 /* MonthData.swift */,
 				4B487C8A26F4E11600098BF7 /* Fonts */,
 				4B487C3826F4B14200098BF7 /* Main.storyboard */,
 				4B487C3E26F4B14200098BF7 /* Assets.xcassets */,
@@ -103,7 +108,6 @@
 		4B487C4E26F4B38C00098BF7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4B487C4F26F4B38C00098BF7 /* NetworkExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -195,9 +199,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B487C3D26F4B14200098BF7 /* WeatherApp.xcdatamodeld in Sources */,
+				4B77D9A826F8B8C500858906 /* Day.swift in Sources */,
 				D5DFC48026F7B2390020ED62 /* Cells.swift in Sources */,
 				D5011A3526F725E500125A4A /* ChooseCityViewController.swift in Sources */,
 				4B487C3726F4B14200098BF7 /* ViewController.swift in Sources */,
+				4B77D9AA26F8BA6800858906 /* MonthData.swift in Sources */,
 				4B487C3326F4B14200098BF7 /* AppDelegate.swift in Sources */,
 				4B487C3526F4B14200098BF7 /* SceneDelegate.swift in Sources */,
 			);

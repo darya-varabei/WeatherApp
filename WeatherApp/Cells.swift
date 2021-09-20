@@ -17,15 +17,13 @@ class TableCell: UITableViewCell {
             bg.image = data.backgroundImage
             daytime.text = data.title
             temp.text = data.title
-            //condition.text = data.url
-            
         }
     }
     
     fileprivate let bg: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.contentMode = .scaleAspectFill
+        iv.contentMode = .scaleAspectFit
         iv.clipsToBounds = true
         iv.layer.cornerRadius = 12
         return iv
@@ -52,8 +50,8 @@ class TableCell: UITableViewCell {
         contentView.addSubview(bg)
         
         bg.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12).isActive = true
-        bg.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 300).isActive = true
-        bg.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -17).isActive = true
+        //bg.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 300).isActive = true
+        bg.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 20).isActive = true
         bg.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12).isActive = true
         
         contentView.addSubview(daytime)
