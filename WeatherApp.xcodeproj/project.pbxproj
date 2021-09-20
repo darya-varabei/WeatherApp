@@ -18,6 +18,8 @@
 		4B487C8E26F4E13900098BF7 /* NotoSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B487C8D26F4E13900098BF7 /* NotoSans-Medium.ttf */; };
 		4B487C9026F4E14400098BF7 /* NotoSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B487C8F26F4E14400098BF7 /* NotoSans-Regular.ttf */; };
 		4B487C9226F4E14C00098BF7 /* NotoSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B487C9126F4E14C00098BF7 /* NotoSans-SemiBold.ttf */; };
+		D5011A3526F725E500125A4A /* ChooseCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5011A3426F725E500125A4A /* ChooseCityViewController.swift */; };
+		D5DFC48026F7B2390020ED62 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DFC47F26F7B2390020ED62 /* Cells.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,6 +50,8 @@
 		4B487C8D26F4E13900098BF7 /* NotoSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Medium.ttf"; sourceTree = "<group>"; };
 		4B487C8F26F4E14400098BF7 /* NotoSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Regular.ttf"; sourceTree = "<group>"; };
 		4B487C9126F4E14C00098BF7 /* NotoSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		D5011A3426F725E500125A4A /* ChooseCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCityViewController.swift; sourceTree = "<group>"; };
+		D5DFC47F26F7B2390020ED62 /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,8 @@
 				4B487C3226F4B14200098BF7 /* AppDelegate.swift */,
 				4B487C3426F4B14200098BF7 /* SceneDelegate.swift */,
 				4B487C3626F4B14200098BF7 /* ViewController.swift */,
+				D5DFC47F26F7B2390020ED62 /* Cells.swift */,
+				D5011A3426F725E500125A4A /* ChooseCityViewController.swift */,
 				4B487C8A26F4E11600098BF7 /* Fonts */,
 				4B487C3826F4B14200098BF7 /* Main.storyboard */,
 				4B487C3E26F4B14200098BF7 /* Assets.xcassets */,
@@ -189,6 +195,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B487C3D26F4B14200098BF7 /* WeatherApp.xcdatamodeld in Sources */,
+				D5DFC48026F7B2390020ED62 /* Cells.swift in Sources */,
+				D5011A3526F725E500125A4A /* ChooseCityViewController.swift in Sources */,
 				4B487C3726F4B14200098BF7 /* ViewController.swift in Sources */,
 				4B487C3326F4B14200098BF7 /* AppDelegate.swift in Sources */,
 				4B487C3526F4B14200098BF7 /* SceneDelegate.swift in Sources */,
@@ -268,7 +276,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -323,7 +331,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
