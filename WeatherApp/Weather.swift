@@ -8,19 +8,19 @@
 import Foundation
 
 // MARK: - Weather
-struct Weather: Codable {
-    let location: Location
-    let current: Current
-    let forecast: Forecast
+public struct Weather: Codable {
+    var location: Location
+    var current: Current
+    var forecast: Forecast
 }
 
 // MARK: - Current
-struct Current: Codable {
-    let lastUpdated: String
-    let tempC: Int
-    let isDay: Int
-    let condition: Condition
-    let windKph: Int
+public struct Current: Codable {
+    var lastUpdated: String
+    var tempC: Double
+    var isDay: Int
+    var condition: Condition
+    var windKph: Double
 
     enum CodingKeys: String, CodingKey {
         case lastUpdated = "last_updated"
@@ -32,26 +32,20 @@ struct Current: Codable {
 }
 
 // MARK: - Condition
-struct Condition: Codable {
-    let text: Text
-}
-
-enum Text: String, Codable {
-    case clear = "Clear"
-    case cloudy = "Cloudy"
-    case partlyCloudy = "Partly cloudy"
+public struct Condition: Codable {
+    var text: String
 }
 
 // MARK: - Forecast
-struct Forecast: Codable {
-    let forecastday: [Forecastday]
+public struct Forecast: Codable {
+    var forecastday: [Forecastday]
 }
 
 // MARK: - Forecastday
-struct Forecastday: Codable {
-    let date: String
-    let day: Day
-    let hour: [Hour]
+public struct Forecastday: Codable {
+    var date: String
+    var day: Day
+    var hour: [Hour]
 
     enum CodingKeys: String, CodingKey {
         case date
@@ -60,10 +54,10 @@ struct Forecastday: Codable {
 }
 
 // MARK: - Day
-struct Day: Codable {
-    let maxtempC, mintempC: Double
-    let maxwindKph: Double
-    let condition: Condition
+public struct Day: Codable {
+    var maxtempC, mintempC: Double
+    var maxwindKph: Double
+    var condition: Condition
 
     enum CodingKeys: String, CodingKey {
         case maxtempC = "maxtemp_c"
@@ -74,12 +68,12 @@ struct Day: Codable {
 }
 
 // MARK: - Hour
-struct Hour: Codable {
-    let time: String
-    let tempC: Double
-    let isDay: Int
-    let condition: Condition
-    let windKph: Double
+public struct Hour: Codable {
+    var time: String
+    var tempC: Double
+    var isDay: Int
+    var condition: Condition
+    var windKph: Double
 
     enum CodingKeys: String, CodingKey {
         case time
@@ -91,10 +85,10 @@ struct Hour: Codable {
 }
 
 // MARK: - Location
-struct Location: Codable {
-    let name: String
-    let lat, lon: Double
-    let localtime: String
+public struct Location: Codable {
+    var name: String
+    var lat, lon: Double
+    var localtime: String
 
     enum CodingKeys: String, CodingKey {
         case name, lat, lon

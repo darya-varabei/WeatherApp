@@ -11,12 +11,12 @@ import UIKit
 class TableCell: UITableViewCell {
     
     static let identifier = "cell1"
-    var data: CustomData? {
+    var data: Forecastday? {
         didSet {
             guard let data = data else { return }
-            bg.image = data.backgroundImage
-            daytime.text = data.title
-            temp.text = data.title
+            bg.image = UIImage(named: data.day.condition.text)
+            daytime.text = data.date
+            temp.text = String(data.day.maxtempC)
         }
     }
     
@@ -36,6 +36,7 @@ class TableCell: UITableViewCell {
         iv.textAlignment = .left
         return iv
     }()
+    
     fileprivate let temp: UILabel = {
         let iv = UILabel()
         iv.translatesAutoresizingMaskIntoConstraints = false

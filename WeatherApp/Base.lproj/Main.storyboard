@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VIl-vl-dGh">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -184,6 +183,10 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="calendarButton" destination="lJF-8E-wPT" id="10l-Jt-Yyq"/>
+                        <outlet property="cityName" destination="ilK-mz-M0l" id="NdU-OE-7dZ"/>
+                        <outlet property="condition" destination="4ED-FC-EPs" id="o1D-ro-i8b"/>
+                        <outlet property="date" destination="blf-0x-2R0" id="URD-gE-a1j"/>
+                        <outlet property="temperature" destination="7CT-7F-7xB" id="CO9-hb-uTc"/>
                         <outlet property="windStrength" destination="oLO-X3-0hv" id="kZW-LR-CjS"/>
                         <outletCollection property="weatherWidget" destination="5Jy-Lt-s7k" collectionClass="NSMutableArray" id="tif-3r-x9L"/>
                     </connections>

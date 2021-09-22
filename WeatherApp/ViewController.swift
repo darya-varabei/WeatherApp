@@ -6,6 +6,7 @@
 //
 
 import UIKit
+//import ApiNetwork
 
 struct CustomData {
     var title: String
@@ -20,14 +21,31 @@ class ViewController: UIViewController {
     @IBOutlet weak var windStrength: UILabel!
     private let tableView = UITableView()
     private let datePicker: UIDatePicker = UIDatePicker()
+    @IBOutlet weak var cityName: UILabel!
+    @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var temperature: UILabel!
+    @IBOutlet weak var condition: UILabel!
     
-    fileprivate let data = [
-        CustomData(title: "The Islands!", url: "maxcodes.io/enroll", backgroundImage: UIImage(named: "Partly")!),
-        CustomData(title: "Subscribe to maxcodes boiiii!", url: "maxcodes.io/courses", backgroundImage: UIImage(named: "Partly")!),
-        CustomData(title: "StoreKit Course!", url: "maxcodes.io/courses", backgroundImage: UIImage(named: "Partly")!),
-        CustomData(title: "Collection Views!", url: "maxcodes.io/courses", backgroundImage: UIImage(named: "Partly")!),
-        CustomData(title: "MapKit!", url: "maxcodes.io/courses", backgroundImage: UIImage(named: "Partly")!),
-    ]
+//    fileprivate let data = [
+//        CustomData(title: "The Islands!", url: "maxcodes.io/enroll", backgroundImage: UIImage(named: "Partly")!),
+//        CustomData(title: "Subscribe to maxcodes boiiii!", url: "maxcodes.io/courses", backgroundImage: UIImage(named: "Partly")!),
+//        CustomData(title: "StoreKit Course!", url: "maxcodes.io/courses", backgroundImage: UIImage(named: "Partly")!),
+//        CustomData(title: "Collection Views!", url: "maxcodes.io/courses", backgroundImage: UIImage(named: "Partly")!),
+//        CustomData(title: "MapKit!", url: "maxcodes.io/courses", backgroundImage: UIImage(named: "Partly")!),
+//    ]
+    
+    var weatherData = [Weather]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.cityName.text = self.weatherData[0].location.name
+                self.date.text = self.weatherData[0].location.localtime
+                self.temperature.text = "\(self.weatherData[0].current.tempC)°C"
+                self.condition.text = self.weatherData[0].current.condition.text
+                self.windStrength.text = "\(self.weatherData[0].current.windKph) mph"
+                              }
+        }
+    }
     
     fileprivate let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -79,6 +97,18 @@ class ViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        let weatherRequest = WeatherRequest(location: "Minsk")
+        weatherRequest.fetchData{ [weak self] result in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let weather):
+                self?.weatherData.append(weather)
+            }
+        }
+    }
+    
     @objc func datePickerValueChanged(_ sender: UIDatePicker){
         
         let dateFormatter: DateFormatter = DateFormatter()
@@ -96,22 +126,24 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
+        return weatherData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCell
         cell.backgroundColor = UIColor(named: "DarkBackground")
         cell.layer.cornerRadius = 10
-        cell.data = self.data[indexPath.item]
+        //cell.data = self.weatherData[0].forecast.forecastday[indexPath.item]
         return cell
     }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return 2
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -121,7 +153,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! TableCell
         cell.backgroundColor = .clear
-        cell.data = self.data[indexPath.item]
+        cell.data = self.weatherData[0].forecast.forecastday[indexPath.row]
         return cell
     }
 }

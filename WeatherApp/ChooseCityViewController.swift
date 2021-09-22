@@ -34,6 +34,8 @@ class ChooseCityViewController: UIViewController {
         return cv
     }()
     
+    var weatherData = [Forecastday]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(collectionView)
@@ -63,7 +65,7 @@ extension ChooseCityViewController: UICollectionViewDelegateFlowLayout, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCell
         cell.backgroundColor = UIColor(named: "DarkBackground")
         cell.layer.cornerRadius = 20
-        cell.data = self.data[indexPath.item]
+        //cell.data = self.weatherData[0].date[indexPath.item]
         return cell
     }
 }
