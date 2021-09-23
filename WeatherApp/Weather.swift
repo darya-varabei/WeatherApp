@@ -33,6 +33,7 @@ public struct Current: Codable {
 
 // MARK: - Condition
 public struct Condition: Codable {
+    var code: Int
     var text: String
 }
 
