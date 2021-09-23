@@ -6,6 +6,7 @@
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -65,40 +66,40 @@
         <!--View Controller-->
         <scene sceneID="mr1-ej-YLl">
             <objects>
-                <viewController id="rl4-mZ-VcJ" customClass="ViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LocationVC" id="rl4-mZ-VcJ" customClass="ViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B4N-HW-JPt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AV6-Hl-WBo">
-                                <rect key="frame" x="80" y="62" width="254" height="33"/>
+                                <rect key="frame" x="80" y="62" width="254" height="28"/>
                                 <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="24"/>
                                 <color key="textColor" name="BasicWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Jy-Lt-s7k">
-                                <rect key="frame" x="28" y="129" width="358" height="177"/>
+                                <rect key="frame" x="28" y="124" width="358" height="177"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilK-mz-M0l">
-                                        <rect key="frame" x="18" y="36" width="220" height="27.5"/>
+                                        <rect key="frame" x="18" y="36" width="220" height="23.5"/>
                                         <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="20"/>
                                         <color key="textColor" name="BasicWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wed, 16 Jul 3:45 pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blf-0x-2R0">
-                                        <rect key="frame" x="18" y="62" width="220" height="16.5"/>
+                                        <rect key="frame" x="18" y="62" width="220" height="14"/>
                                         <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="12"/>
                                         <color key="textColor" name="BasicYellow"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7CT-7F-7xB">
-                                        <rect key="frame" x="18" y="100.5" width="220" height="38.5"/>
+                                        <rect key="frame" x="18" y="98" width="220" height="33"/>
                                         <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="28"/>
                                         <color key="textColor" name="BasicYellow"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Partly cloudy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ED-FC-EPs">
-                                        <rect key="frame" x="18" y="144" width="220" height="21"/>
+                                        <rect key="frame" x="18" y="136" width="220" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="bDF-Zk-gRN"/>
                                         </constraints>
@@ -107,17 +108,17 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Partly" translatesAutoresizingMaskIntoConstraints="NO" id="uim-h4-XKd">
-                                        <rect key="frame" x="212" y="15" width="128" height="88.5"/>
+                                        <rect key="frame" x="212" y="15" width="128" height="91.5"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 m/s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLO-X3-0hv">
-                                        <rect key="frame" x="283" y="142.5" width="48" height="20.5"/>
+                                        <rect key="frame" x="284.5" y="145.5" width="46.5" height="17.5"/>
                                         <color key="tintColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="15"/>
                                         <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="highlightedColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wind" translatesAutoresizingMaskIntoConstraints="NO" id="ykJ-mF-jia">
-                                        <rect key="frame" x="219" y="133.5" width="60" height="29.5"/>
+                                        <rect key="frame" x="220.5" y="136.5" width="60" height="26.5"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="DarkBackground"/>
@@ -147,7 +148,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJF-8E-wPT">
-                                <rect key="frame" x="28" y="414" width="91" height="34"/>
+                                <rect key="frame" x="28" y="409" width="92" height="31"/>
                                 <fontDescription key="fontDescription" name="NotoSans-Medium" family="Noto Sans" pointSize="16"/>
                                 <state key="normal" title="16 Jul, 2021 ">
                                     <color key="titleColor" name="BasicYellow"/>
@@ -157,7 +158,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="739-vJ-Jjb">
-                                <rect key="frame" x="306" y="414" width="80" height="29"/>
+                                <rect key="frame" x="309" y="409" width="77" height="26"/>
                                 <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="12"/>
                                 <state key="normal" title="Week forecast">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -204,13 +205,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a city" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jH-Ib-Ba9">
-                                <rect key="frame" x="82" y="86" width="250" height="44"/>
+                                <rect key="frame" x="82" y="86" width="250" height="37.5"/>
                                 <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a city to see the weather forecast" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNY-xY-a1O">
-                                <rect key="frame" x="98.5" y="138" width="217" height="38.5"/>
+                                <rect key="frame" x="98.5" y="131.5" width="217" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="217" id="YXU-3H-81n"/>
                                 </constraints>
@@ -219,11 +220,29 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find weather in cities" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8FK-SC-hlh">
-                                <rect key="frame" x="39" y="291.5" width="183.5" height="25"/>
+                                <rect key="frame" x="39" y="279.5" width="170.5" height="21"/>
                                 <fontDescription key="fontDescription" name="NotoSans-Medium" family="Noto Sans" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z6j-yX-irc">
+                                <rect key="frame" x="39" y="405" width="335" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="47" id="zHc-p9-k8X">
+                                        <rect key="frame" x="0.0" y="24.5" width="335" height="47"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zHc-p9-k8X" id="M4b-Mw-eH1">
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="47"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="rl4-mZ-VcJ" kind="show" identifier="showCity" id="Kzu-um-K76"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dRr-Nm-YxF"/>
                         <color key="backgroundColor" name="BackgroundBasic"/>
@@ -241,13 +260,14 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="subtitleLabel" destination="xNY-xY-a1O" id="soB-ip-X9I"/>
+                        <outlet property="tableWeatherView" destination="z6j-yX-irc" id="mBb-OM-gOp"/>
                         <outletCollection property="titleLabel" destination="0jH-Ib-Ba9" collectionClass="NSMutableArray" id="6lV-aZ-slY"/>
                         <outletCollection property="featured" destination="8FK-SC-hlh" collectionClass="NSMutableArray" id="A08-x4-B9R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gWF-pp-i9z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="553.62318840579712" y="1560.9375"/>
+            <point key="canvasLocation" x="1462.3188405797102" y="1560.9375"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Ytq-tF-o7e">
@@ -264,7 +284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nrn-qd-Z8j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1594" y="1561"/>
+            <point key="canvasLocation" x="2502.898550724638" y="1560.9375"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rNj-c9-2cc">
@@ -278,7 +298,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="TVc-YR-TJW" kind="relationship" relationship="rootViewController" id="c3U-M8-isp"/>
+                        <segue destination="qCE-MT-gaT" kind="relationship" relationship="rootViewController" id="c3U-M8-isp"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lw0-07-oIu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -304,7 +324,29 @@
             </objects>
             <point key="canvasLocation" x="1361" y="877"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Tgc-av-9ks">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qCE-MT-gaT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="E0z-Gg-nE1"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RTg-iD-s75">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="TVc-YR-TJW" kind="relationship" relationship="rootViewController" id="s1t-8H-hgs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wpZ-Ji-9lq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="553.62318840579712" y="1560.9375"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Kzu-um-K76"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Partly" width="128" height="128"/>
         <image name="house" catalog="system" width="128" height="106"/>
@@ -325,5 +367,8 @@
         <namedColor name="OpaqueWhite">
             <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

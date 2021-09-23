@@ -28,6 +28,8 @@ class ViewController: UIViewController {
     
     var location: String?
     
+    //static let identifier
+    
 //    fileprivate let data = [
 //        CustomData(title: "The Islands!", url: "maxcodes.io/enroll", backgroundImage: UIImage(named: "Partly")!),
 //        CustomData(title: "Subscribe to maxcodes boiiii!", url: "maxcodes.io/courses", backgroundImage: UIImage(named: "Partly")!),

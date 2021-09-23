@@ -39,7 +39,10 @@ class ChooseCityViewController: UIViewController {
         return cv
     }()
     
+    @IBOutlet weak var tableWeatherView: UITableView!
     var weatherData = [Forecastday]()
+    
+    let citiesIdentifier = "ShowCity"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,18 +58,27 @@ class ChooseCityViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         
         //elf.chooseCity.layer.cornerRadius = 15
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(TextCell.self, forCellReuseIdentifier: "text")
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        tableView.sectionIndexColor = .clear
-        tableView.backgroundColor = .clear
-        tableView.topAnchor.constraint(equalTo: featured[0].bottomAnchor, constant: 15).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -94).isActive = true
-        tableView.showsVerticalScrollIndicator = false
+        tableWeatherView.translatesAutoresizingMaskIntoConstraints = false
+        tableWeatherView.register(TextCell.self, forCellReuseIdentifier: "text")
+        self.tableWeatherView.delegate = self
+        self.tableWeatherView.dataSource = self
+        tableWeatherView.sectionIndexColor = .clear
+        tableWeatherView.backgroundColor = .clear
+        tableWeatherView.topAnchor.constraint(equalTo: featured[0].bottomAnchor, constant: 15).isActive = true
+        tableWeatherView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27).isActive = true
+        tableWeatherView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27).isActive = true
+        tableWeatherView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -94).isActive = true
+        tableWeatherView.showsVerticalScrollIndicator = false
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if  segue.identifier == citiesIdentifier,
+            let destination = segue.destination as? ViewController,
+            let blogIndex = tableView.indexPathForSelectedRow?.row
+        {
+            destination.location = cities[blogIndex]
+        }
     }
 }
 
@@ -110,7 +122,7 @@ extension ChooseCityViewController: UITableViewDelegate, UITableViewDataSource {
     
     private func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
          //if such cell exists and destination controller (the one to show) exists too..
-        if let subjectCell = tableView.cellForRow(at: indexPath as IndexPath), let destinationViewController = navigationController?.storyboard?.instantiateViewController(withIdentifier: "locationVC") as? ViewController{
+        if let subjectCell = tableView.cellForRow(at: indexPath as IndexPath), let destinationViewController = navigationController?.storyboard?.instantiateViewController(withIdentifier: "LocationVC") as? ViewController{
                //This is a bonus, I will be showing at destionation controller the same text of the cell from where it comes...
                if let text = subjectCell.textLabel?.text {
                    destinationViewController.location = text
