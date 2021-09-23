@@ -1,8 +1,8 @@
 //
-//  NetworkRequest.swift
+//  ApiRequest.swift
 //  ApiNetwork
 //
-//  Created by Darya on 9/22/21.
+//  Created by Darya on 9/23/21.
 //
 
 import Foundation
@@ -19,7 +19,7 @@ public struct WeatherRequest {
 
    public init(location: String) {
 
-        let resurceString = "https://api.weatherapi.com/v1/forecast.json?key=\(API_KEY)&q=\(location)&days=7&aqi=no&alerts=no"
+        let resurceString = "https://api.weatherapi.com/v1/forecast.json?key=\(API_KEY)&q=Minsk&days=7&aqi=no&alerts=no"
         guard let resourceURL = URL(string: resurceString) else {fatalError()}
 
         self.resourceURL = resourceURL
@@ -37,7 +37,6 @@ public struct WeatherRequest {
                 let weatherResponse = try decoder.decode(Weather.self, from: jsonData)
                 let weatherDetails = weatherResponse
                 completion(.success(weatherDetails))
-                print("\(weatherDetails.forecast.forecastday)\n\n")
             } catch {
                 completion(.failure((.canNotProcessData)))
             }
@@ -45,3 +44,4 @@ public struct WeatherRequest {
         dataTask.resume()
     }
 }
+

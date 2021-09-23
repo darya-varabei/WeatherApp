@@ -7,16 +7,21 @@
 
 import Foundation
 import UIKit
+import ApiNetwork
 
 class ChooseCityViewController: UIViewController {
     
     @IBOutlet var titleLabel: [UILabel]!
     @IBOutlet var subtitle: [UILabel]!
-    @IBOutlet var chooseCityButton: [UIButton]!
+    @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet var featured: [UILabel]!
+    let tableView = UITableView()
+    @IBOutlet weak var chooseCity: UIButton!
     
     @IBAction func chooseCity(_ sender: Any) {
     }
+    
+    let cities = ["Minsk", "Moskou", "London", "Paris", "Riga", "Vilnus", "Warsaw", "Stockholm", "Oslo", "Helsinki", "Copenhagen", "Madrid", "Rome", "Bristol", "Berlin", "Munich", "Stambul", "Antalya"]
     fileprivate let data = [
         CustomData(title: "The Islands!", url: "maxcodes.io/enroll", backgroundImage: UIImage(named: "Partly")!),
         CustomData(title: "Subscribe to maxcodes boiiii!", url: "maxcodes.io/courses", backgroundImage: UIImage(named: "Partly")!),
@@ -27,7 +32,7 @@ class ChooseCityViewController: UIViewController {
     
     fileprivate let collectionView:UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
+        layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.register(CustomCell.self, forCellWithReuseIdentifier: "cell")
@@ -39,16 +44,28 @@ class ChooseCityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(collectionView)
+        view.addSubview(tableView)
         collectionView.backgroundColor = .clear
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.topAnchor.constraint(equalTo:self.featured[0].bottomAnchor, constant: 20).isActive = true
+        collectionView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: 120).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -78).isActive = true
         collectionView.showsVerticalScrollIndicator = false
         
-        self.chooseCityButton[0].layer.cornerRadius = 15
+        //elf.chooseCity.layer.cornerRadius = 15
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(TextCell.self, forCellReuseIdentifier: "text")
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        tableView.sectionIndexColor = .clear
+        tableView.backgroundColor = .clear
+        tableView.topAnchor.constraint(equalTo: featured[0].bottomAnchor, constant: 15).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -94).isActive = true
+        tableView.showsVerticalScrollIndicator = false
         
     }
 }
@@ -65,8 +82,44 @@ extension ChooseCityViewController: UICollectionViewDelegateFlowLayout, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCell
         cell.backgroundColor = UIColor(named: "DarkBackground")
         cell.layer.cornerRadius = 20
+
         //cell.data = self.weatherData[0].date[indexPath.item]
         return cell
     }
 }
 
+extension ChooseCityViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cities.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60.0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "text", for: indexPath) as! TextCell
+        cell.backgroundColor = UIColor(named: "DarkBackground")
+        //cell.textLabel?.text = "Minsk"
+        cell.text = cities[indexPath.row]
+//        cell.data = self.weatherData[0].forecast.forecastday[0].hour[indexPath.row*3]
+        return cell
+    }
+    
+    private func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+         //if such cell exists and destination controller (the one to show) exists too..
+        if let subjectCell = tableView.cellForRow(at: indexPath as IndexPath), let destinationViewController = navigationController?.storyboard?.instantiateViewController(withIdentifier: "locationVC") as? ViewController{
+               //This is a bonus, I will be showing at destionation controller the same text of the cell from where it comes...
+               if let text = subjectCell.textLabel?.text {
+                   destinationViewController.location = text
+               }
+//               } else {
+//                   destinationViewController.textToShow = "Tapped Cell's textLabel is empty"
+//               }
+             //Then just push the controller into the view hierarchy
+             navigationController?.pushViewController(destinationViewController, animated: true)
+           }
+        }
+}

@@ -7,16 +7,55 @@
 
 import Foundation
 import UIKit
+import ApiNetwork
+
+class TextCell: UITableViewCell {
+    
+    static let identifier = "text"
+    var text: String? {
+        didSet{
+        daytime.text = text
+        }
+    }
+    
+    fileprivate let daytime: UILabel = {
+        let iv = UILabel()
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.textColor = UIColor(named: "BasicWhite")
+        iv.font = UIFont(name: "NotoSans-Regular", size: 14)
+        iv.textAlignment = .left
+        return iv
+    }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.addSubview(daytime)
+        
+        daytime.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15).isActive = true
+        daytime.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15).isActive = true
+        daytime.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10).isActive = true
+        daytime.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15).isActive = true
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
 
 class TableCell: UITableViewCell {
     
     static let identifier = "cell1"
-    var data: Forecastday? {
+    let timeRange = 11...15
+    var data: Hour? {
         didSet {
+            let timestr = String(data?.time ?? "")
+            let index4 = timestr.index(timestr.startIndex, offsetBy: 11)
             guard let data = data else { return }
-            bg.image = UIImage(named: data.day.condition.text)
-            daytime.text = data.date
-            temp.text = String(data.day.maxtempC)
+            bg.image = UIImage(named: data.condition.text)
+            daytime.text = String(data.time.suffix(from:index4))
+            temp.text = String("\(data.tempC)°C")
         }
     }
     
@@ -80,13 +119,12 @@ class TableCell: UITableViewCell {
 
 class CustomCell: UICollectionViewCell {
     
-    var data: CustomData? {
+    var data: Forecastday? {
         didSet {
             guard let data = data else { return }
-            bg.image = data.backgroundImage
-            city.text = data.title
-            temp.text = data.title
-            condition.text = data.url
+            bg.image = UIImage(named: data.day.condition.text)
+            city.text = data.date
+            temp.text = String(data.day.maxtempC)
         }
     }
     

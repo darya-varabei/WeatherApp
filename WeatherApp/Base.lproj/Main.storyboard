@@ -71,34 +71,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AV6-Hl-WBo">
-                                <rect key="frame" x="80" y="62" width="254" height="28"/>
+                                <rect key="frame" x="80" y="62" width="254" height="33"/>
                                 <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="24"/>
                                 <color key="textColor" name="BasicWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Jy-Lt-s7k">
-                                <rect key="frame" x="28" y="124" width="358" height="177"/>
+                                <rect key="frame" x="28" y="129" width="358" height="177"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilK-mz-M0l">
-                                        <rect key="frame" x="18" y="36" width="220" height="23.5"/>
+                                        <rect key="frame" x="18" y="36" width="220" height="27.5"/>
                                         <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="20"/>
                                         <color key="textColor" name="BasicWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wed, 16 Jul 3:45 pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blf-0x-2R0">
-                                        <rect key="frame" x="18" y="62" width="220" height="14"/>
+                                        <rect key="frame" x="18" y="62" width="220" height="16.5"/>
                                         <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="12"/>
                                         <color key="textColor" name="BasicYellow"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7CT-7F-7xB">
-                                        <rect key="frame" x="18" y="98" width="220" height="33"/>
+                                        <rect key="frame" x="18" y="100.5" width="220" height="38.5"/>
                                         <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="28"/>
                                         <color key="textColor" name="BasicYellow"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Partly cloudy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ED-FC-EPs">
-                                        <rect key="frame" x="18" y="136" width="220" height="21"/>
+                                        <rect key="frame" x="18" y="144" width="220" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="bDF-Zk-gRN"/>
                                         </constraints>
@@ -107,17 +107,17 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Partly" translatesAutoresizingMaskIntoConstraints="NO" id="uim-h4-XKd">
-                                        <rect key="frame" x="212" y="15" width="128" height="91.5"/>
+                                        <rect key="frame" x="212" y="15" width="128" height="88.5"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 m/s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLO-X3-0hv">
-                                        <rect key="frame" x="284.5" y="145.5" width="46.5" height="17.5"/>
+                                        <rect key="frame" x="283" y="142.5" width="48" height="20.5"/>
                                         <color key="tintColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="15"/>
                                         <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="highlightedColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wind" translatesAutoresizingMaskIntoConstraints="NO" id="ykJ-mF-jia">
-                                        <rect key="frame" x="220.5" y="136.5" width="60" height="26.5"/>
+                                        <rect key="frame" x="219" y="133.5" width="60" height="29.5"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="DarkBackground"/>
@@ -147,7 +147,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJF-8E-wPT">
-                                <rect key="frame" x="28" y="409" width="92" height="31"/>
+                                <rect key="frame" x="28" y="414" width="91" height="34"/>
                                 <fontDescription key="fontDescription" name="NotoSans-Medium" family="Noto Sans" pointSize="16"/>
                                 <state key="normal" title="16 Jul, 2021 ">
                                     <color key="titleColor" name="BasicYellow"/>
@@ -157,7 +157,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="739-vJ-Jjb">
-                                <rect key="frame" x="309" y="409" width="77" height="26"/>
+                                <rect key="frame" x="306" y="414" width="80" height="29"/>
                                 <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="12"/>
                                 <state key="normal" title="Week forecast">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -204,13 +204,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a city" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jH-Ib-Ba9">
-                                <rect key="frame" x="82" y="86" width="250" height="37.5"/>
+                                <rect key="frame" x="82" y="86" width="250" height="44"/>
                                 <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a city to see the weather forecast" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNY-xY-a1O">
-                                <rect key="frame" x="98.5" y="131.5" width="217" height="33"/>
+                                <rect key="frame" x="98.5" y="138" width="217" height="38.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="217" id="YXU-3H-81n"/>
                                 </constraints>
@@ -218,23 +218,8 @@
                                 <color key="textColor" name="OpaqueWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="fill" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5P-Qd-sGV">
-                                <rect key="frame" x="37" y="209.5" width="340" height="62"/>
-                                <color key="backgroundColor" name="DarkBackground"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="62" id="EkY-im-fKc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="16"/>
-                                <state key="normal" title="    See weather in cities">
-                                    <color key="titleColor" name="BasicWhite"/>
-                                    <color key="titleShadowColor" name="DarkBackground"/>
-                                </state>
-                                <connections>
-                                    <action selector="chooseCity:" destination="TVc-YR-TJW" eventType="touchUpInside" id="DFF-MB-TXZ"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Featured" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8FK-SC-hlh">
-                                <rect key="frame" x="39" y="296.5" width="71.5" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find weather in cities" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8FK-SC-hlh">
+                                <rect key="frame" x="39" y="291.5" width="183.5" height="25"/>
                                 <fontDescription key="fontDescription" name="NotoSans-Medium" family="Noto Sans" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -244,22 +229,18 @@
                         <color key="backgroundColor" name="BackgroundBasic"/>
                         <constraints>
                             <constraint firstItem="0jH-Ib-Ba9" firstAttribute="leading" secondItem="dRr-Nm-YxF" secondAttribute="leading" constant="82" id="062-yY-y9D"/>
-                            <constraint firstItem="dRr-Nm-YxF" firstAttribute="trailing" secondItem="E5P-Qd-sGV" secondAttribute="trailing" constant="37" id="0WI-MH-Al7"/>
                             <constraint firstItem="xNY-xY-a1O" firstAttribute="top" secondItem="0jH-Ib-Ba9" secondAttribute="bottom" constant="8" id="3P2-US-PcL"/>
+                            <constraint firstItem="8FK-SC-hlh" firstAttribute="top" secondItem="xNY-xY-a1O" secondAttribute="bottom" constant="115" id="4ER-RP-nyP"/>
                             <constraint firstItem="xNY-xY-a1O" firstAttribute="centerX" secondItem="ny9-RP-RTq" secondAttribute="centerX" id="7MZ-Dy-yGF"/>
-                            <constraint firstItem="8FK-SC-hlh" firstAttribute="top" secondItem="E5P-Qd-sGV" secondAttribute="bottom" constant="25" id="FAm-jd-baN"/>
                             <constraint firstItem="dRr-Nm-YxF" firstAttribute="trailing" secondItem="0jH-Ib-Ba9" secondAttribute="trailing" constant="82" id="Smz-Vn-stB"/>
                             <constraint firstItem="8FK-SC-hlh" firstAttribute="leading" secondItem="dRr-Nm-YxF" secondAttribute="leading" constant="39" id="VCa-t2-f4S"/>
-                            <constraint firstItem="E5P-Qd-sGV" firstAttribute="leading" secondItem="dRr-Nm-YxF" secondAttribute="leading" constant="37" id="Vx7-ya-gEH"/>
                             <constraint firstItem="0jH-Ib-Ba9" firstAttribute="top" secondItem="dRr-Nm-YxF" secondAttribute="top" constant="42" id="Wpv-Hi-AGW"/>
-                            <constraint firstItem="E5P-Qd-sGV" firstAttribute="top" secondItem="xNY-xY-a1O" secondAttribute="bottom" constant="45" id="cIG-op-RE4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="o6K-3T-Udt"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outletCollection property="subtitle" destination="xNY-xY-a1O" collectionClass="NSMutableArray" id="CSd-0d-e3I"/>
-                        <outletCollection property="chooseCityButton" destination="E5P-Qd-sGV" collectionClass="NSMutableArray" id="XUW-po-LUV"/>
+                        <outlet property="subtitleLabel" destination="xNY-xY-a1O" id="soB-ip-X9I"/>
                         <outletCollection property="titleLabel" destination="0jH-Ib-Ba9" collectionClass="NSMutableArray" id="6lV-aZ-slY"/>
                         <outletCollection property="featured" destination="8FK-SC-hlh" collectionClass="NSMutableArray" id="A08-x4-B9R"/>
                     </connections>

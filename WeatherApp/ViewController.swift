@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import ApiNetwork
+import ApiNetwork
 
 struct CustomData {
     var title: String
@@ -19,12 +19,14 @@ class ViewController: UIViewController {
     @IBOutlet var weatherWidget: [UIView]!
     @IBOutlet weak var calendarButton: UIButton!
     @IBOutlet weak var windStrength: UILabel!
-    private let tableView = UITableView()
-    private let datePicker: UIDatePicker = UIDatePicker()
+    let tableView = UITableView()
+    private var datePicker: UIDatePicker = UIDatePicker()
     @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var temperature: UILabel!
     @IBOutlet weak var condition: UILabel!
+    
+    var location: String?
     
 //    fileprivate let data = [
 //        CustomData(title: "The Islands!", url: "maxcodes.io/enroll", backgroundImage: UIImage(named: "Partly")!),
@@ -37,6 +39,12 @@ class ViewController: UIViewController {
     var weatherData = [Weather]() {
         didSet {
             DispatchQueue.main.async {
+                print(self.weatherData[0].forecast.forecastday.count)
+                self.tableView.delegate = self
+                self.tableView.dataSource = self
+                self.collectionView.delegate = self
+                self.collectionView.dataSource = self
+                self.collectionView.reloadData()
                 self.tableView.reloadData()
                 self.cityName.text = self.weatherData[0].location.name
                 self.date.text = self.weatherData[0].location.localtime
@@ -56,16 +64,25 @@ class ViewController: UIViewController {
         return cv
     }()
     
+//    fileprivate let tableView: UITableView = {
+//        let layout = UITableView()
+//        //layout.scrollDirection = .horizontal
+//        let cv = UITableView(frame: .zero)
+//        cv.translatesAutoresizingMaskIntoConstraints = false
+//        //cv.register(TableCell.self, forCellWithReuseIdentifier: "cell")
+//        return cv
+//    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getData()
         self.weatherWidget[0].layer.cornerRadius = 15
         view.addSubview(collectionView)
         view.addSubview(tableView)
         self.view.addSubview(datePicker)
         collectionView.backgroundColor = .clear
-        collectionView.delegate = self
-        collectionView.dataSource = self
+//        collectionView.delegate = self
+//        collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 28, bottom: 0, right: 0)
         collectionView.topAnchor.constraint(equalTo:self.weatherWidget[0].bottomAnchor, constant: 30).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
@@ -77,8 +94,8 @@ class ViewController: UIViewController {
         tableView.register(TableCell.self, forCellReuseIdentifier: "cell1")
         tableView.sectionIndexColor = .clear
         tableView.backgroundColor = .clear
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
         tableView.topAnchor.constraint(equalTo: calendarButton.bottomAnchor, constant: 30).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27).isActive = true
@@ -97,8 +114,17 @@ class ViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        let weatherRequest = WeatherRequest(location: "Minsk")
+    override func viewWillAppear(_ animated: Bool) {
+        if let _ = location {
+            print("location")
+        }
+        else {
+            location = "Minsk"
+        }
+    }
+    
+    func getData() {
+        let weatherRequest = WeatherRequest(location: location ?? "Minsk")
         weatherRequest.fetchData{ [weak self] result in
             switch result {
             case .failure(let error):
@@ -126,24 +152,23 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return weatherData.count
+        print(weatherData.count)
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCell
         cell.backgroundColor = UIColor(named: "DarkBackground")
         cell.layer.cornerRadius = 10
-        //cell.data = self.weatherData[0].forecast.forecastday[indexPath.item]
+        cell.data = self.weatherData[0].forecast.forecastday[0]
         return cell
     }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 8
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -151,10 +176,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! TableCell
         cell.backgroundColor = .clear
-        cell.data = self.weatherData[0].forecast.forecastday[indexPath.row]
+        cell.data = self.weatherData[0].forecast.forecastday[0].hour[indexPath.row*3]
         return cell
     }
 }
 
+extension Collection where Indices.Iterator.Element == Index {
+    subscript (safe index: Index) -> Iterator.Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}
