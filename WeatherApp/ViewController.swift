@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import ApiNetwork
+//import ApiNetwork
 import CoreData
 
 struct CustomData {
@@ -28,7 +28,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var condition: UILabel!
     @IBOutlet weak var switchTablesButton: UIButton!
     
-    var location: String?
+    var location: String? {
+        didSet {
+            getData()
+            tableView.reloadData()
+        }
+    }
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var cities: [FeaturedCity]?
@@ -93,6 +98,8 @@ class ViewController: UIViewController {
         view.addSubview(tableView)
         self.view.addSubview(datePicker)
         collectionView.backgroundColor = .clear
+//        self.collectionView.delegate = self
+//        self.collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 28, bottom: 0, right: 0)
         collectionView.topAnchor.constraint(equalTo:self.weatherWidget[0].bottomAnchor, constant: 30).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
@@ -124,7 +131,7 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         if let _ = location {
-            print("location")
+            print(location)
         }
         else {
             location = "London"
@@ -132,7 +139,14 @@ class ViewController: UIViewController {
     }
     
     func getData() {
-        let weatherRequest = WeatherRequest(location: location ?? "London")
+        
+        if let _ = location {
+            print(location)
+        }
+        else {
+            location = "London"
+        }
+        let weatherRequest = WeatherRequest(location: self.location ?? "Minsk")
         weatherRequest.fetchData{ [weak self] result in
             switch result {
             case .failure(let error):
@@ -212,7 +226,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(weatherData.count)
+        print(citiesData.count)
         return citiesData.count
     }
     
@@ -223,13 +237,20 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
         cell.data = self.citiesData[indexPath.item]
         return cell
     }
+    
+    private func collectionView(_ collectionView: UICollectionView, didSelectRowAtIndexPath indexPath: IndexPath) {
+        print("cell1")
+        self.location = self.citiesData[indexPath.item].location.name
+        getData()
+        getFeaturedData()
+    }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if showCurrentDay {
-        return 8
+        return 24
         }
         else {
             return 16
@@ -245,7 +266,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         if showCurrentDay{
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! TableCell
             cell.backgroundColor = .clear
-            cell.data = self.weatherData[0].forecast.forecastday[0].hour[indexPath.row*3]
+            cell.data = self.weatherData[0].forecast.forecastday[0].hour[indexPath.row]
             return cell
         }
         else {

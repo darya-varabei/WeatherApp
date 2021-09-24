@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-import ApiNetwork
+//import ApiNetwork
 
 class TextCell: UITableViewCell {
     
@@ -242,9 +242,9 @@ class CustomCell: UICollectionViewCell {
         contentView.addSubview(city)
         
         city.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
-        city.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 80).isActive = true
+        city.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 70).isActive = true
         city.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -14).isActive = true
-        city.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -41).isActive = true
+        city.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -38).isActive = true
         
         contentView.addSubview(temp)
         
