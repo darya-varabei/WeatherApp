@@ -18,14 +18,12 @@ public struct Weather: Codable {
 public struct Current: Codable {
     var lastUpdated: String
     var tempC: Double
-    //var isDay: Int
     var condition: Condition
     var windKph: Double
 
     enum CodingKeys: String, CodingKey {
         case lastUpdated = "last_updated"
         case tempC = "temp_c"
-        //case isDay = "is_day"
         case condition
         case windKph = "wind_kph"
     }
@@ -72,14 +70,12 @@ public struct Day: Codable {
 public struct Hour: Codable {
     var time: String
     var tempC: Double
-    //var isDay: Int
     var condition: Condition
     var windKph: Double
 
     enum CodingKeys: String, CodingKey {
         case time
         case tempC = "temp_c"
-        //case isDay = "is_day"
         case condition
         case windKph = "wind_kph"
     }
@@ -88,11 +84,10 @@ public struct Hour: Codable {
 // MARK: - Location
 public struct Location: Codable {
     var name: String
-   // var lat, lon: Double
     var localtime: String
 
     enum CodingKeys: String, CodingKey {
-        case name//, lat, lon
+        case name
         case localtime
     }
 }

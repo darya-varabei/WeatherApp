@@ -7,6 +7,7 @@
 
 import UIKit
 import ApiNetwork
+import CoreData
 
 struct CustomData {
     var title: String
@@ -25,18 +26,24 @@ class ViewController: UIViewController {
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var temperature: UILabel!
     @IBOutlet weak var condition: UILabel!
+    @IBOutlet weak var switchTablesButton: UIButton!
     
     var location: String?
     
-    //static let identifier
-    
-//    fileprivate let data = [
-//        CustomData(title: "The Islands!", url: "maxcodes.io/enroll", backgroundImage: UIImage(named: "Partly")!),
-//        CustomData(title: "Subscribe to maxcodes boiiii!", url: "maxcodes.io/courses", backgroundImage: UIImage(named: "Partly")!),
-//        CustomData(title: "StoreKit Course!", url: "maxcodes.io/courses", backgroundImage: UIImage(named: "Partly")!),
-//        CustomData(title: "Collection Views!", url: "maxcodes.io/courses", backgroundImage: UIImage(named: "Partly")!),
-//        CustomData(title: "MapKit!", url: "maxcodes.io/courses", backgroundImage: UIImage(named: "Partly")!),
-//    ]
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var cities: [FeaturedCity]?
+    var citiesData = [Weather]()
+    var showCurrentDay: Bool = true {
+        didSet {
+            tableView.reloadData()
+            if self.showCurrentDay{
+            tableView.register(TableCell.self, forCellReuseIdentifier: "cell1")
+            }
+            else {
+                tableView.register(ForecastCell.self, forCellReuseIdentifier: "cell2")
+            }
+        }
+    }
     
     var weatherData = [Weather]() {
         didSet {
@@ -46,7 +53,6 @@ class ViewController: UIViewController {
                 self.tableView.dataSource = self
                 self.collectionView.delegate = self
                 self.collectionView.dataSource = self
-                self.collectionView.reloadData()
                 self.tableView.reloadData()
                 self.cityName.text = self.weatherData[0].location.name
                 self.date.text = self.weatherData[0].location.localtime
@@ -54,6 +60,16 @@ class ViewController: UIViewController {
                 self.condition.text = self.weatherData[0].current.condition.text
                 self.windStrength.text = "\(self.weatherData[0].current.windKph) mph"
                               }
+        }
+    }
+    
+    var forecastData = [Welcome]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.delegate = self
+                self.tableView.dataSource = self
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -66,25 +82,17 @@ class ViewController: UIViewController {
         return cv
     }()
     
-//    fileprivate let tableView: UITableView = {
-//        let layout = UITableView()
-//        //layout.scrollDirection = .horizontal
-//        let cv = UITableView(frame: .zero)
-//        cv.translatesAutoresizingMaskIntoConstraints = false
-//        //cv.register(TableCell.self, forCellWithReuseIdentifier: "cell")
-//        return cv
-//    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         getData()
+        fetchCities()
+        getFeaturedData()
         self.weatherWidget[0].layer.cornerRadius = 15
+        
         view.addSubview(collectionView)
         view.addSubview(tableView)
         self.view.addSubview(datePicker)
         collectionView.backgroundColor = .clear
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 28, bottom: 0, right: 0)
         collectionView.topAnchor.constraint(equalTo:self.weatherWidget[0].bottomAnchor, constant: 30).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
@@ -96,8 +104,6 @@ class ViewController: UIViewController {
         tableView.register(TableCell.self, forCellReuseIdentifier: "cell1")
         tableView.sectionIndexColor = .clear
         tableView.backgroundColor = .clear
-//        tableView.delegate = self
-//        tableView.dataSource = self
         tableView.topAnchor.constraint(equalTo: calendarButton.bottomAnchor, constant: 30).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27).isActive = true
@@ -121,12 +127,12 @@ class ViewController: UIViewController {
             print("location")
         }
         else {
-            location = "Minsk"
+            location = "London"
         }
     }
     
     func getData() {
-        let weatherRequest = WeatherRequest(location: location ?? "Minsk")
+        let weatherRequest = WeatherRequest(location: location ?? "London")
         weatherRequest.fetchData{ [weak self] result in
             switch result {
             case .failure(let error):
@@ -134,6 +140,44 @@ class ViewController: UIViewController {
             case .success(let weather):
                 self?.weatherData.append(weather)
             }
+        }
+        weatherRequest.fetchForecast{ [weak self] result in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let weather):
+                self?.forecastData.append(weather)
+            }
+        }
+    }
+    
+    func getFeaturedData() {
+        
+        for city in cities!{
+            let weatherRequest = WeatherRequest(location: city.cityName ?? "London")
+        print(city.cityName)
+        weatherRequest.fetchData{ [weak self] result in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let weather):
+                self?.citiesData.append(weather)
+            }
+        }
+        }
+    }
+    
+    func fetchCities() {
+        
+        do {
+            self.cities = try context.fetch(FeaturedCity.fetchRequest())
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+        catch {
+            print("Cities fetch failed")
         }
     }
     
@@ -145,6 +189,20 @@ class ViewController: UIViewController {
         
         print("Selected value \(selectedDate)")
     }
+    
+    @IBAction func switchTables(_ sender: UIButton) {
+        if self.switchTablesButton.title(for: .normal) == "16 Days forecast" {
+            self.switchTablesButton.setTitle("Day forecast", for: .normal)
+            self.showCurrentDay = false
+            self.tableView.reloadData()
+        }
+        else {
+            self.switchTablesButton.setTitle("16 Days forecast", for: .normal)
+            self.showCurrentDay = true
+            self.tableView.reloadData()
+        }
+    }
+    
 }
 
 
@@ -155,14 +213,14 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print(weatherData.count)
-        return 2
+        return citiesData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCell
         cell.backgroundColor = UIColor(named: "DarkBackground")
         cell.layer.cornerRadius = 10
-        cell.data = self.weatherData[0].forecast.forecastday[0]
+        cell.data = self.citiesData[indexPath.item]
         return cell
     }
 }
@@ -170,7 +228,12 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if showCurrentDay {
         return 8
+        }
+        else {
+            return 16
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -179,10 +242,18 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! TableCell
-        cell.backgroundColor = .clear
-        cell.data = self.weatherData[0].forecast.forecastday[0].hour[indexPath.row*3]
-        return cell
+        if showCurrentDay{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! TableCell
+            cell.backgroundColor = .clear
+            cell.data = self.weatherData[0].forecast.forecastday[0].hour[indexPath.row*3]
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! ForecastCell
+            cell.backgroundColor = .clear
+            cell.data = self.forecastData[0].data[indexPath.row]
+            return cell
+        }
     }
 }
 

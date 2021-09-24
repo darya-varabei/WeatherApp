@@ -71,7 +71,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AV6-Hl-WBo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WeatherApp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AV6-Hl-WBo">
                                 <rect key="frame" x="80" y="62" width="254" height="28"/>
                                 <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="24"/>
                                 <color key="textColor" name="BasicWhite"/>
@@ -158,11 +158,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="739-vJ-Jjb">
-                                <rect key="frame" x="309" y="409" width="77" height="26"/>
+                                <rect key="frame" x="295" y="409" width="91" height="26"/>
                                 <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="12"/>
-                                <state key="normal" title="Week forecast">
+                                <state key="normal" title="16 Days forecast">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="switchTables:" destination="rl4-mZ-VcJ" eventType="touchUpInside" id="0ki-uh-L8c"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CTU-v7-wPX"/>
@@ -187,6 +190,7 @@
                         <outlet property="cityName" destination="ilK-mz-M0l" id="NdU-OE-7dZ"/>
                         <outlet property="condition" destination="4ED-FC-EPs" id="o1D-ro-i8b"/>
                         <outlet property="date" destination="blf-0x-2R0" id="URD-gE-a1j"/>
+                        <outlet property="switchTablesButton" destination="739-vJ-Jjb" id="luZ-ci-JPt"/>
                         <outlet property="temperature" destination="7CT-7F-7xB" id="CO9-hb-uTc"/>
                         <outlet property="windStrength" destination="oLO-X3-0hv" id="kZW-LR-CjS"/>
                         <outletCollection property="weatherWidget" destination="5Jy-Lt-s7k" collectionClass="NSMutableArray" id="tif-3r-x9L"/>
@@ -327,11 +331,11 @@
         <!--Navigation Controller-->
         <scene sceneID="Tgc-av-9ks">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qCE-MT-gaT" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="qCE-MT-gaT" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="E0z-Gg-nE1"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RTg-iD-s75">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

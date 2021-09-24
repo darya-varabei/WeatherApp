@@ -53,7 +53,7 @@ class TableCell: UITableViewCell {
             let timestr = String(data?.time ?? "")
             let index4 = timestr.index(timestr.startIndex, offsetBy: 11)
             guard let data = data else { return }
-            bg.image = UIImage(named: data.condition.text)
+            bg.image = UIImage(named: String(data.condition.code))
             daytime.text = String(data.time.suffix(from:index4))
             temp.text = String("\(data.tempC)°C")
         }
@@ -90,7 +90,6 @@ class TableCell: UITableViewCell {
         contentView.addSubview(bg)
         
         bg.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12).isActive = true
-        //bg.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 300).isActive = true
         bg.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 20).isActive = true
         bg.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12).isActive = true
         
@@ -116,15 +115,85 @@ class TableCell: UITableViewCell {
 }
 
 
+class ForecastCell: UITableViewCell {
+    
+    static let identifier = "cell2"
+    let timeRange = 11...15
+    var data: Datum? {
+        didSet {
+            guard let data = data else { return }
+            bg.image = UIImage(named: String(data.weather.code))
+            daytime.text = data.validDate
+            temp.text = String("\(data.minTemp)°C - \(data.maxTemp)°C")
+        }
+    }
+    
+    fileprivate let bg: UIImageView = {
+        let iv = UIImageView()
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.contentMode = .scaleAspectFit
+        iv.clipsToBounds = true
+        iv.layer.cornerRadius = 12
+        return iv
+    }()
+    fileprivate let daytime: UILabel = {
+        let iv = UILabel()
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.textColor = UIColor(named: "BasicWhite")
+        iv.font = UIFont(name: "NotoSans-Medium", size: 18)
+        iv.textAlignment = .left
+        return iv
+    }()
+    
+    fileprivate let temp: UILabel = {
+        let iv = UILabel()
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.textColor = UIColor(named: "BasicWhite")
+        iv.font = UIFont(name: "NotoSans-Medium", size: 18)
+        return iv
+    }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.addSubview(bg)
+        
+        bg.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12).isActive = true
+        bg.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 20).isActive = true
+        bg.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12).isActive = true
+        
+        contentView.addSubview(daytime)
+        
+        daytime.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 19).isActive = true
+        daytime.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 12).isActive = true
+        daytime.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -240).isActive = true
+        daytime.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -19).isActive = true
+        
+        contentView.addSubview(temp)
+        
+        temp.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 19).isActive = true
+        temp.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 170).isActive = true
+        temp.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -65).isActive = true
+        temp.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -19).isActive = true
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+
+
 
 class CustomCell: UICollectionViewCell {
     
-    var data: Forecastday? {
+    var data: Weather? {
         didSet {
             guard let data = data else { return }
-            bg.image = UIImage(named: data.day.condition.text)
-            city.text = data.date
-            temp.text = String(data.day.maxtempC)
+            bg.image = UIImage(named: String(data.current.condition.code))
+            city.text = data.location.name
+            temp.text = String(data.current.tempC)
         }
     }
     

@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import ApiNetwork
+import CoreData
 
 class ChooseCityViewController: UIViewController {
     
