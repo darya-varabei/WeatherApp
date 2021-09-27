@@ -142,7 +142,7 @@ class ViewController: UIViewController {
         else {
             location = "London"
         }
-        let weatherRequest = WeatherRequest(location: self.location ?? "Minsk")
+        var weatherRequest = WeatherRequest(location: self.location ?? "Minsk")
         weatherRequest.fetchData{ [weak self] (result : Result<[Weather],WeatherError>) in
             switch result {
             case .failure(let error):
@@ -162,9 +162,10 @@ class ViewController: UIViewController {
     }
     
     func getFeaturedData() {
-        
-        for city in cities!{
-            let weatherRequest = WeatherRequest(location: city.cityName ?? "London")
+        print(cities?.count)
+        if cities?.count != nil{
+        for city in cities! {
+            var weatherRequest = WeatherRequest(location: city.cityName ?? "London")
         print(city.cityName)
         weatherRequest.fetchData{ [weak self] (result : Result<[Weather],WeatherError>) in
             switch result {
@@ -173,6 +174,7 @@ class ViewController: UIViewController {
             case .success(let weather):
                 self?.citiesData.append(contentsOf: weather)
             }
+        }
         }
         }
     }

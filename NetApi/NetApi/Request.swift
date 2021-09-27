@@ -35,7 +35,7 @@ public struct WeatherRequest {
 
     public mutating func fetchData<T: Decodable>(completion: @escaping(Result<[T], WeatherError>) -> Void) {
         
-        if T.self != type(of: [Weather].self) {
+        if T.self == type(of: [Welcome].self) {
             self.resourceURL = self.forecastURL
         }
         let dataTask = URLSession.shared.dataTask(with: resourceURL) { data, _, _ in
@@ -48,7 +48,7 @@ public struct WeatherRequest {
                 let decoder = JSONDecoder()
                 let weatherResponse = try decoder.decode(T.self, from: jsonData)
                 let weatherDetails = weatherResponse
-                completion(.success(weatherDetails as! [T]))
+                completion(.success([weatherResponse]))
                 //print("\(weatherDetails.forecast.forecastday)\n\n")
             } catch {
                 completion(.failure((.canNotProcessData)))
