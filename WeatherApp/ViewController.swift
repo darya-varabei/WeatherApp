@@ -6,38 +6,34 @@
 //
 
 import UIKit
-//import ApiNetwork
+import NetApi
 import CoreData
-
-struct CustomData {
-    var title: String
-    var url: String
-    var backgroundImage: UIImage
-}
 
 class ViewController: UIViewController {
     
     @IBOutlet var weatherWidget: [UIView]!
     @IBOutlet weak var calendarButton: UIButton!
     @IBOutlet weak var windStrength: UILabel!
-    let tableView = UITableView()
-    private var datePicker: UIDatePicker = UIDatePicker()
     @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var temperature: UILabel!
     @IBOutlet weak var condition: UILabel!
     @IBOutlet weak var switchTablesButton: UIButton!
     
+    fileprivate let tableView = UITableView()
+    private var datePicker: UIDatePicker = UIDatePicker()
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    fileprivate var cities: [FeaturedCity]?
+    fileprivate var citiesData = [Weather]()
+    
     var location: String? {
         didSet {
             getData()
+            getFeaturedData()
             tableView.reloadData()
         }
     }
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var cities: [FeaturedCity]?
-    var citiesData = [Weather]()
     var showCurrentDay: Bool = true {
         didSet {
             tableView.reloadData()
@@ -50,7 +46,7 @@ class ViewController: UIViewController {
         }
     }
     
-    var weatherData = [Weather]() {
+    fileprivate var weatherData = [Weather]() {
         didSet {
             DispatchQueue.main.async {
                 print(self.weatherData[0].forecast.forecastday.count)
@@ -68,7 +64,7 @@ class ViewController: UIViewController {
         }
     }
     
-    var forecastData = [Welcome]() {
+    fileprivate var forecastData = [Welcome]() {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.delegate = self
@@ -241,8 +237,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     private func collectionView(_ collectionView: UICollectionView, didSelectRowAtIndexPath indexPath: IndexPath) {
         print("cell1")
         self.location = self.citiesData[indexPath.item].location.name
-        getData()
-        getFeaturedData()
+        self.view.reloadInputViews()
     }
 }
 
@@ -250,7 +245,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if showCurrentDay {
-        return 24
+            return 24
         }
         else {
             return 16

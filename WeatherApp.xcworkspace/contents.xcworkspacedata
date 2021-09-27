@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:ApiNetwork/ApiNetwork.xcodeproj">
+      location = "group:NetApi/NetApi.xcodeproj">
    </FileRef>
    <FileRef
       location = "container:WeatherApp.xcodeproj">

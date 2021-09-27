@@ -7,14 +7,14 @@
 
 import Foundation
 import UIKit
-//import ApiNetwork
+import NetApi
 
 class TextCell: UITableViewCell {
     
     static let identifier = "text"
-    var text: String? {
+    var nameCity: String? {
         didSet{
-        daytime.text = text
+        daytime.text = nameCity
         }
     }
     
@@ -47,7 +47,7 @@ class TextCell: UITableViewCell {
 class TableCell: UITableViewCell {
     
     static let identifier = "cell1"
-    let timeRange = 11...15
+    private let timeRange = 11...15
     var data: Hour? {
         didSet {
             let timestr = String(data?.time ?? "")
@@ -118,7 +118,6 @@ class TableCell: UITableViewCell {
 class ForecastCell: UITableViewCell {
     
     static let identifier = "cell2"
-    let timeRange = 11...15
     var data: Datum? {
         didSet {
             guard let data = data else { return }
@@ -205,6 +204,7 @@ class CustomCell: UICollectionViewCell {
         iv.layer.cornerRadius = 12
         return iv
     }()
+    
     fileprivate let city: UILabel = {
         let iv = UILabel()
         iv.translatesAutoresizingMaskIntoConstraints = false
@@ -213,6 +213,7 @@ class CustomCell: UICollectionViewCell {
         iv.textAlignment = .right
         return iv
     }()
+    
     fileprivate let temp: UILabel = {
         let iv = UILabel()
         iv.translatesAutoresizingMaskIntoConstraints = false
@@ -220,6 +221,7 @@ class CustomCell: UICollectionViewCell {
         iv.font = UIFont(name: "NotoSans-Medium", size: 13)
         return iv
     }()
+    
     fileprivate let condition: UILabel = {
         let iv = UILabel()
         iv.translatesAutoresizingMaskIntoConstraints = false

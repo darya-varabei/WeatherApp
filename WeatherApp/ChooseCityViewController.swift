@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-//import ApiNetwork
+import NetApi
 import CoreData
 
 class ChooseCityViewController: UIViewController {
@@ -16,24 +16,18 @@ class ChooseCityViewController: UIViewController {
     @IBOutlet var subtitle: [UILabel]!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet var featured: [UILabel]!
-    let tableView = UITableView()
     @IBOutlet weak var chooseCity: UIButton!
     
     @IBAction func chooseCity(_ sender: Any) {
     }
     
-    let cities = ["Minsk", "Moskou", "London", "Paris", "Riga", "Vilnus", "Warsaw", "Stockholm", "Oslo", "Helsinki", "Copenhagen", "Madrid", "Rome", "Bristol", "Berlin", "Munich", "Stambul", "Antalya"]
-    fileprivate let data = [
-        CustomData(title: "The Islands!", url: "maxcodes.io/enroll", backgroundImage: UIImage(named: "Partly")!),
-        CustomData(title: "Subscribe to maxcodes boiiii!", url: "maxcodes.io/courses", backgroundImage: UIImage(named: "Partly")!),
-        CustomData(title: "StoreKit Course!", url: "maxcodes.io/courses", backgroundImage: UIImage(named: "Partly")!),
-        CustomData(title: "Collection Views!", url: "maxcodes.io/courses", backgroundImage: UIImage(named: "Partly")!),
-        CustomData(title: "MapKit!", url: "maxcodes.io/courses", backgroundImage: UIImage(named: "Partly")!),
-    ]
+    private let cities = ["Minsk", "Moskou", "London", "Paris", "Riga", "Vilnus", "Warsaw", "Stockholm", "Oslo", "Helsinki", "Copenhagen", "Madrid", "Rome", "Bristol", "Berlin", "Munich", "Stambul", "Antalya"]
+    private let tableView = UITableView()
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var featuredCities: [FeaturedCity]?
-    var citiesData = [Weather]()
+    private  let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    fileprivate var featuredCities: [FeaturedCity]?
+    fileprivate var citiesData = [Weather]()
+    
     fileprivate let collectionView:UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -44,7 +38,7 @@ class ChooseCityViewController: UIViewController {
     }()
     
     @IBOutlet weak var tableWeatherView: UITableView!
-    var weatherData = [Forecastday]()
+    fileprivate var weatherData = [Forecastday]()
     var result: String?
     
     let citiesIdentifier = "ShowCity"
@@ -130,7 +124,7 @@ extension ChooseCityViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "text", for: indexPath) as! TextCell
         cell.backgroundColor = UIColor(named: "DarkBackground")
         //cell.textLabel?.text = "Minsk"
-        cell.text = cities[indexPath.row]
+        cell.nameCity = cities[indexPath.row]
 //        cell.data = self.weatherData[0].forecast.forecastday[0].hour[indexPath.row*3]
         return cell
     }
