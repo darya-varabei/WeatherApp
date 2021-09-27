@@ -143,20 +143,20 @@ class ViewController: UIViewController {
             location = "London"
         }
         let weatherRequest = WeatherRequest(location: self.location ?? "Minsk")
-        weatherRequest.fetchData{ [weak self] result in
+        weatherRequest.fetchData{ [weak self] (result : Result<[Weather],WeatherError>) in
             switch result {
             case .failure(let error):
                 print(error)
             case .success(let weather):
-                self?.weatherData.append(weather)
+                self?.weatherData.append(contentsOf: weather)
             }
         }
-        weatherRequest.fetchForecast{ [weak self] result in
+        weatherRequest.fetchData{ [weak self] (result : Result<[Welcome],WeatherError>) in
             switch result {
             case .failure(let error):
                 print(error)
             case .success(let weather):
-                self?.forecastData.append(weather)
+                self?.forecastData.append(contentsOf: weather)
             }
         }
     }
@@ -166,12 +166,12 @@ class ViewController: UIViewController {
         for city in cities!{
             let weatherRequest = WeatherRequest(location: city.cityName ?? "London")
         print(city.cityName)
-        weatherRequest.fetchData{ [weak self] result in
+        weatherRequest.fetchData{ [weak self] (result : Result<[Weather],WeatherError>) in
             switch result {
             case .failure(let error):
                 print(error)
             case .success(let weather):
-                self?.citiesData.append(weather)
+                self?.citiesData.append(contentsOf: weather)
             }
         }
         }
